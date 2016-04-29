@@ -1,0 +1,11 @@
+{
+  "name": "nrf24l01",
+  "version": "0.0.0",
+  "description": "NRF24L01 SPI driver",
+  "keywords": [],
+  "author": "Brian Kauke",
+  "license": "MIT",
+  "dependencies": {
+      "mbed-drivers" : "1.0"
+  }
+}
