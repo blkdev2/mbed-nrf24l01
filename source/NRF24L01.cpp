@@ -214,10 +214,10 @@ void NRF24L01::enable_dyn_pld(bool enable)
 
 ///Enables the dynamic payload feature for the given pipe.
 ///Overrides the payload width setting for the pipe.
-void NRF24L01::enable_dyn_pld_pipe(uint8_t pipe, uint8_t state)
+void NRF24L01::enable_dyn_pld_pipe(uint8_t pipe, bool enable)
 {
     uint8_t dynpld_pipes = get_register(NRF24L01_REG_DYNPD);
-    if(state)
+    if(enable)
         dynpld_pipes |= (1 << pipe);
     else
         dynpld_pipes &= ~(1 << pipe);
@@ -247,11 +247,13 @@ void NRF24L01::enable_dyn_ack(bool enable)
 
 ///Enables / Disables auctomatic packet acknowledgement for the givent pipe.
 ///By default all pipes have this feature turned on.
-void	NRF24L01::set_autoack_pipe(uint8_t pipe, uint8_t state)
+void NRF24L01::set_autoack_pipe(uint8_t pipe, bool enable)
 {
     uint8_t auto_ack_pipes = get_register(NRF24L01_REG_EN_AA);
-    auto_ack_pipes &= ~(1<<pipe);
-    auto_ack_pipes |= (1<<pipe);
+    if (enable)
+        auto_ack_pipes &= ~(1<<pipe);
+    else
+        auto_ack_pipes |= (1<<pipe);
     set_register(NRF24L01_REG_EN_AA, auto_ack_pipes);
 }
 
@@ -346,10 +348,10 @@ void NRF24L01::activate(void)
 }
 
 ///Enables / Disables single data pipes. By default pipe 0 and pipe 1 are enabled
-void NRF24L01::enable_pipe(uint8_t pipe, uint8_t state)
+void NRF24L01::enable_pipe(uint8_t pipe, bool enable)
 {
     uint8_t pipes = get_register(NRF24L01_REG_EN_RXADDR);
-    if(state)
+    if(enable)
         pipes |= (1<<pipe);
     else
         pipes &= ~(1<<pipe);
