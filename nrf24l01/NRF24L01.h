@@ -51,10 +51,10 @@ public:
      * @param mosi SPI Master Out, Slave In pin
      * @param miso SPI Master In, Slave Out pin
      * @param sclk SPI Clock pin
-     * @param ce Chip Enable pin
      * @param csn Chip Select pin
+     * @param ce Chip Enable pin
      */
-    NRF24L01(RadioType radio_type, PinName mosi, PinName miso, PinName sclk, PinName ce, PinName csn);
+    NRF24L01(RadioType radio_type, PinName mosi, PinName miso, PinName sclk, PinName csn, PinName ce);
 
     /** Initialize the radio module
      * @param data_rate Wireless data rate to set at initialization

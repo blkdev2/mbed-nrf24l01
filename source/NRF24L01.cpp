@@ -29,7 +29,7 @@ THE SOFTWARE.
 
 using namespace nrf24l01;
 
-NRF24L01::NRF24L01(RadioType radio_type, PinName mosi, PinName miso, PinName sclk, PinName ce, PinName csn)
+NRF24L01::NRF24L01(RadioType radio_type, PinName mosi, PinName miso, PinName sclk, PinName csn, PinName ce)
     : radio_type(radio_type),
       _ce(ce),
       _csn(csn)
